@@ -8,7 +8,9 @@ Player controller
 public class PlayerController : MonoBehaviour
 {
     public float speed = 10f;
+    
     public int milk = 0;
+    public int currentLevel;
 
     // Update is called once per frame
     void Update()
@@ -64,15 +66,5 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    /*
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.GetComponent<milk>())
-        {
-            milk += other.GetComponent<milk>().value;
-            Destroy(other.gameObject);
-        }
-    }
-    */
 }
 
