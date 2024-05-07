@@ -70,6 +70,10 @@ public class PlayerController : MonoBehaviour
                 score -= 5;
                 Destroy(collision.gameObject);
             }
+            else if(ingredientController.milkNeeded == milkGathered)
+            {
+                Destroy(collision.gameObject);
+            }
         }
     }
 }

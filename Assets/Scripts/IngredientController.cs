@@ -42,7 +42,7 @@ public class IngredientController : MonoBehaviour
             cheeseNeeded = 2;
             eggNeeded = 3;
 
-            for(int i = 0; i < milkNeeded; i++)
+            for(int i = -2; i < milkNeeded; i++)
             {
                 levelOne();
                 Instantiate(milkObj, GetComponent<Transform>().position, GetComponent<Transform>().rotation);
