@@ -8,9 +8,19 @@ Player controller
 public class PlayerController : MonoBehaviour
 {
     public float speed = 10f;
-    
-    public int milk = 0;
+
     public int currentLevel;
+
+    public int milkGathered;
+    public int score;
+
+    public IngredientController ingredientController;
+
+    private void Start()
+    {
+        score = 0;
+        milkGathered = 0;
+    }
 
     // Update is called once per frame
     void Update()
@@ -21,50 +31,46 @@ public class PlayerController : MonoBehaviour
     public void Move()
     {
         //Check if player is moving left
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             transform.Translate(Vector3.left * speed * Time.deltaTime);
         }
 
         //Check if player is moving left
 
-        else if (Input.GetKey(KeyCode.D))
+        else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             transform.Translate(Vector3.right * speed * Time.deltaTime);
         }
 
-        else if (Input.GetKey(KeyCode.W))
+        else if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
         {
             transform.Translate(Vector3.forward * speed * Time.deltaTime);
         }
 
-        else if (Input.GetKey(KeyCode.S))
+        else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
         {
             transform.Translate(Vector3.back * speed * Time.deltaTime);
         }
 
-
-        //Arrow keys instead of WASD
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            transform.Translate(Vector3.left * speed * Time.deltaTime);
-        }
-
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            transform.Translate(Vector3.right * speed * Time.deltaTime);
-        }
-
-        else if (Input.GetKey(KeyCode.UpArrow))
-        {
-            transform.Translate(Vector3.forward * speed * Time.deltaTime);
-        }
-
-        else if (Input.GetKey(KeyCode.DownArrow))
-        {
-            transform.Translate(Vector3.back * speed * Time.deltaTime);
-        }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.GetComponent<Milk>())
+        {
+            if (ingredientController.milkNeeded != 0 && ingredientController.milkNeeded > milkGathered)
+            {
+                milkGathered++;
+                score += 10;
+                Destroy(collision.gameObject);
+            }
+            else if (ingredientController.milkNeeded == 0)
+            {
+                score -= 5;
+                Destroy(collision.gameObject);
+            }
+        }
+    }
 }
 

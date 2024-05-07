@@ -15,9 +15,9 @@ public class IngredientController : MonoBehaviour
 
     public PlayerController playerController;
 
-    private int milk;
-    private int cheese;
-    private int egg;
+    public int milkNeeded;
+    public int cheeseNeeded;
+    public int eggNeeded;
 
     // Start is called before the first frame update
     void Start()
@@ -38,11 +38,11 @@ public class IngredientController : MonoBehaviour
     {
         if (levelNow == 1)
         {
-            milk = 2;
-            cheese = 2;
-            egg = 3;
+            milkNeeded = 2;
+            cheeseNeeded = 2;
+            eggNeeded = 3;
 
-            for(int i = 0; i < milk; i++)
+            for(int i = 0; i < milkNeeded; i++)
             {
                 levelOne();
                 Instantiate(milkObj, GetComponent<Transform>().position, GetComponent<Transform>().rotation);
@@ -53,9 +53,9 @@ public class IngredientController : MonoBehaviour
 
     public void levelOne()
     {
-        float xPos = Random.Range(-10, 10);
+        float xPos = Random.Range(-9f, 9f);
         Debug.Log(xPos);
-        float zPos = Random.Range(-10, 10);
+        float zPos = Random.Range(-9f, 9f);
         Debug.Log(zPos);
 
         transform.position = new Vector3(xPos, 1, zPos);
