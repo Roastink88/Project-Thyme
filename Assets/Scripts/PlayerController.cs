@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     public float speed = 10f;
 
     public int currentLevel;
-
     public int milkGathered;
     public int score;
 
@@ -20,6 +19,7 @@ public class PlayerController : MonoBehaviour
     {
         score = 0;
         milkGathered = 0;
+        currentLevel = 1;
     }
 
     // Update is called once per frame
@@ -35,8 +35,6 @@ public class PlayerController : MonoBehaviour
         {
             transform.Translate(Vector3.left * speed * Time.deltaTime);
         }
-
-        //Check if player is moving left
 
         else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
@@ -59,22 +57,26 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Milk>())
         {
-            if (ingredientController.milkNeeded != 0 && ingredientController.milkNeeded > milkGathered)
+            if (ingredientController.milkNeeded > milkGathered)
             {
+                Destroy(collision.gameObject);
                 milkGathered++;
                 score += 10;
-                Destroy(collision.gameObject);
             }
             else if (ingredientController.milkNeeded == 0)
             {
-                score -= 5;
+                //score -= 5;
                 Destroy(collision.gameObject);
             }
             else if(ingredientController.milkNeeded == milkGathered)
             {
+                //score -= 5;
                 Destroy(collision.gameObject);
+
             }
         }
     }
+    
+
 }
 
