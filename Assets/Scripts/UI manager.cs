@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 
 /// <summary>
@@ -14,15 +15,21 @@ public class UI : MonoBehaviour
     public PlayerController playerController;
     public TMP_Text points;
     public TMP_Text milk;
-    public TMP_Text sauce;
-    public TMP_Text pasta;
+    public TMP_Text cheese;
+    public TMP_Text eggs;
+
+    public int milkGathered;
+    public int score;
+
+    public IngredientController ingredientController;
 
     void Start()
     {
-       
+        
+
     }
 
-    private void OnCollisionEnter(Collision collision)
+   /* private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.GetComponent<Milk>())
         {
@@ -30,5 +37,24 @@ public class UI : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
-    
+   */
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.GetComponent<Milk>())
+        {
+            if (ingredientController.milkNeeded != 0 && ingredientController.milkNeeded < milkGathered)
+            {
+                milkGathered++;
+                score += 10;
+                Destroy(collision.gameObject);
+                milk.text = "<s>" + milk.text + "<s>";
+            }
+            
+            else if (ingredientController.milkNeeded == milkGathered)
+            {
+                Destroy(collision.gameObject);
+            }
+        }
+    }
 }
