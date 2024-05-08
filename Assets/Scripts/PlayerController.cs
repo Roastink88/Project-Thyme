@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public int currentLevel;
     public int milkGathered;
     public int score;
+    public int scoreIncrement = 10;
 
     public IngredientController ingredientController;
 
@@ -61,16 +62,16 @@ public class PlayerController : MonoBehaviour
             {
                 Destroy(collision.gameObject);
                 milkGathered++;
-                score += 10;
+                score += scoreIncrement;
             }
             else if (ingredientController.milkNeeded == 0)
             {
-                //score -= 5;
+                score -= scoreIncrement/2;
                 Destroy(collision.gameObject);
             }
             else if(ingredientController.milkNeeded == milkGathered)
             {
-                //score -= 5;
+                score -= scoreIncrement / 2;
                 Destroy(collision.gameObject);
 
             }
