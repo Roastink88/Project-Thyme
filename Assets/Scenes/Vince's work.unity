@@ -1291,6 +1291,7 @@ GameObject:
   - component: {fileID: 318869886}
   - component: {fileID: 318869885}
   - component: {fileID: 318869889}
+  - component: {fileID: 318869890}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1405,6 +1406,21 @@ MonoBehaviour:
   milkGathered: 0
   score: 0
   ingredientController: {fileID: 0}
+--- !u!114 &318869890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318869884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca556aa21abb93f4b85900d9ab8df039, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerController: {fileID: 1669182101}
+  ingredientController: {fileID: 1533474926}
+  countdownText: {fileID: 0}
 --- !u!1 &319582709
 GameObject:
   m_ObjectHideFlags: 0
@@ -6612,6 +6628,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7aa262c5f40618f438d22c6b8a1dcc5f, type: 3}
+--- !u!114 &1533474926 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7273356747070111931, guid: 7aa262c5f40618f438d22c6b8a1dcc5f, type: 3}
+  m_PrefabInstance: {fileID: 1533474925}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 438a7e17cefee5c488cb7dae7a82218e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1582231877
 GameObject:
   m_ObjectHideFlags: 0
@@ -7112,6 +7139,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 112
       objectReference: {fileID: 0}
+    - target: {fileID: 2203898967710991506, guid: 57a05fd5be2f0a346b72b79a4861739d, type: 3}
+      propertyPath: levelManager
+      value: 
+      objectReference: {fileID: 4092155370821364270, guid: 10cd50e6edbe0b44fb34923305f9ecfe, type: 3}
     - target: {fileID: 2203898967710991506, guid: 57a05fd5be2f0a346b72b79a4861739d, type: 3}
       propertyPath: milkGathered
       value: 0

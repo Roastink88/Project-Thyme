@@ -34,23 +34,17 @@ public class UI : MonoBehaviour
         points.text = "Points: " + playerController.score.ToString();
     }
 
-    /* private void OnCollisionEnter(Collision collision)
-     {
-         if (collision.gameObject.GetComponent<Milk>())
-         {
-             milk.text = "<s>" + milk.text + "<s>";
-             Destroy(collision.gameObject);
-         }
-     }
-    */
+    
 
    
-    private void OnCollisionEnter(Collision collision)
+    public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.GetComponent<Milk>())
         {
             if (ingredientController.milkNeeded != 0 && ingredientController.milkNeeded < milkGathered)
             {
+                print("test");
+
                 milkGathered++;
                 score += 10;
                 Destroy(collision.gameObject);
