@@ -32,12 +32,17 @@ public class UI : MonoBehaviour
     private void Update()
     {
         points.text = "Points: " + playerController.score.ToString();
+
+        if (playerController.milkGathered > ingredientController.milkNeeded)
+        {
+            milk.text = "<s>" + milk.text + "<s>";
+        }
     }
 
     
 
    
-    public void OnCollisionEnter(Collision collision)
+   /* public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.GetComponent<Milk>())
         {
@@ -57,4 +62,5 @@ public class UI : MonoBehaviour
             }
         }
     }
+   */
 }
