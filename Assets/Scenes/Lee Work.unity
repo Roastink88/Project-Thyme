@@ -1161,6 +1161,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1964475026780929084, guid: c587a74917cb0e345a6fc87324472e93, type: 3}
     - target: {fileID: 7273356747070111931, guid: 7aa262c5f40618f438d22c6b8a1dcc5f, type: 3}
+      propertyPath: thymeObj
+      value: 
+      objectReference: {fileID: 4042240500968520040, guid: c27e0b8f3661be044af3f185d382c136, type: 3}
+    - target: {fileID: 7273356747070111931, guid: 7aa262c5f40618f438d22c6b8a1dcc5f, type: 3}
       propertyPath: cheeseObj
       value: 
       objectReference: {fileID: 6070251920653413137, guid: b4c60f4edf9656c48aecdd52f950f086, type: 3}

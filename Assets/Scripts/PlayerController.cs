@@ -132,6 +132,11 @@ public class PlayerController : MonoBehaviour
 
             }
         }
+        else if (collision.gameObject.GetComponent<Thyme>())
+        {
+            score += scoreIncrement * 5;
+            Destroy(collision.gameObject);
+        }
     }
 
     //Resets player position to accomodate for level two and sets current level

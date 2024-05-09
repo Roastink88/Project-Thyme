@@ -12,6 +12,7 @@ public class IngredientController : MonoBehaviour
     public GameObject milkObj;
     public GameObject cheeseObj;
     public GameObject eggObj;
+    public GameObject thymeObj;
 
     public PlayerController playerController;
 
@@ -48,6 +49,18 @@ public class IngredientController : MonoBehaviour
 
             //spawns the ingredient
             Instantiate(ingredient, GetComponent<Transform>().position, GetComponent<Transform>().rotation);
+        }
+
+        for(int i = 0; i < Random.Range(0, 2); i++)
+        {
+            float xPos = Random.Range(-levelsize, levelsize);
+            float zPos = Random.Range(-levelsize, levelsize);
+
+            //moves the spawner to the area where the ingredients will be spawned
+            transform.position = new Vector3(xPos, objectHeight, zPos);
+
+            //spawns the ingredient
+            Instantiate(thymeObj, GetComponent<Transform>().position, GetComponent<Transform>().rotation);
         }
     }
 
