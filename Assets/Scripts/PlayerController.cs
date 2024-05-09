@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
     public float floorInc = 30f;
 
     public int currentLevel;
-    public int milkGathered;
     public int score;
     public int scoreIncrement = 10;
 
@@ -16,6 +15,10 @@ public class PlayerController : MonoBehaviour
     public LevelManager levelManager;
 
     private Vector3 startPos;
+
+    private int milkGathered;
+    private int eggGathered;
+    private int cheeseGathered;
 
     private void Start()
     {
@@ -77,6 +80,52 @@ public class PlayerController : MonoBehaviour
             }
             //Too much of ingredient is grabbed
             else if(ingredientController.milkNeeded <= milkGathered)
+            {
+                score -= scoreIncrement / 2;
+                Destroy(collision.gameObject);
+
+            }
+        }
+        else if (collision.gameObject.GetComponent<Egg>())
+        {
+            //Correct ingredient grabbed and correct ammount
+            if (ingredientController.eggNeeded > eggGathered)
+            {
+                Destroy(collision.gameObject);
+                eggGathered++;
+                score += scoreIncrement;
+            }
+            //Wrong ingredient grabbed
+            else if (ingredientController.eggNeeded == 0)
+            {
+                score -= scoreIncrement / 2;
+                Destroy(collision.gameObject);
+            }
+            //Too much of ingredient is grabbed
+            else if (ingredientController.eggNeeded <= eggGathered)
+            {
+                score -= scoreIncrement / 2;
+                Destroy(collision.gameObject);
+
+            }
+        }
+        else if (collision.gameObject.GetComponent<Cheese>())
+        {
+            //Correct ingredient grabbed and correct ammount
+            if (ingredientController.cheeseNeeded > cheeseGathered)
+            {
+                Destroy(collision.gameObject);
+                cheeseGathered++;
+                score += scoreIncrement;
+            }
+            //Wrong ingredient grabbed
+            else if (ingredientController.cheeseNeeded == 0)
+            {
+                score -= scoreIncrement / 2;
+                Destroy(collision.gameObject);
+            }
+            //Too much of ingredient is grabbed
+            else if (ingredientController.cheeseNeeded <= cheeseGathered)
             {
                 score -= scoreIncrement / 2;
                 Destroy(collision.gameObject);
