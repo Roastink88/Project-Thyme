@@ -16,9 +16,9 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 startPos;
 
-    private int milkGathered;
-    private int eggGathered;
-    private int cheeseGathered;
+    public int milkGathered;
+    public int eggGathered;
+    public int cheeseGathered;
 
     private void Start()
     {
