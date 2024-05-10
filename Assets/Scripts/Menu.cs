@@ -14,4 +14,10 @@ public class GameOver : MonoBehaviour
     {
         SceneManager.LoadScene(3);
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+        print ("QuitGame");
+    }
 }
