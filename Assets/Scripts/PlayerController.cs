@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 
     public IngredientController ingredientController;
     public LevelManager levelManager;
+    public UI uiManager;
 
     private Vector3 startPos;
 
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
+        uiManager.resetNeeded();
         startPos = transform.position;
         score = 0;
         milkGathered = 0;
@@ -142,6 +144,11 @@ public class PlayerController : MonoBehaviour
     //Resets player position to accomodate for level two and sets current level
     public void levelTwoStart()
     {
+        cheeseGathered = 0;
+        milkGathered = 0;
+        eggGathered = 0;
+
+        uiManager.resetNeeded();
         transform.position = new Vector3(0, 31.25f, 0);
         currentLevel = 2;
     }
@@ -149,6 +156,11 @@ public class PlayerController : MonoBehaviour
     //Resets player position to accomodate for level three and sets current level
     public void levelThreeStart()
     {
+        cheeseGathered = 0;
+        milkGathered = 0;
+        eggGathered = 0;
+
+        uiManager.resetNeeded();
         transform.position = new Vector3(0, 61.25f, 0);
         currentLevel = 3;
     }
@@ -156,6 +168,11 @@ public class PlayerController : MonoBehaviour
     //Resets player position to accomodate for level four and sets current level
     public void levelFourStart()
     {
+        cheeseGathered = 0;
+        milkGathered = 0;
+        eggGathered = 0;
+
+        uiManager.resetNeeded();
         transform.position = new Vector3(0, 91.25f, 0);
         currentLevel = 4;
     }
