@@ -18,12 +18,14 @@ public class LevelManager : MonoBehaviour
 
     public TMP_Text countdownText;
 
+    Coroutine ti;
+
     // Start is called before the first frame update
     void Start()
     {
         istg = 0;
         permTime = levelTimerTime;
-        StartCoroutine(levelOneTimer());
+        StartCoroutine(LevelTimer());
         countdownText.text = levelTimerTime.ToString();
     }
 
@@ -33,7 +35,7 @@ public class LevelManager : MonoBehaviour
         
     }
 
-    public IEnumerator levelOneTimer()
+    public IEnumerator LevelTimer()
     {
         //creates the countdown based off of the permTime
         for(int i = levelTimerTime += 1; i != 0; i--)
@@ -42,15 +44,23 @@ public class LevelManager : MonoBehaviour
             //Debug.Log(levelTimerTime);
             yield return new WaitForSeconds(1);
             countdownText.text = levelTimerTime.ToString();
+
+            if(playerController.milkGathered >= ingredientController.milkNeeded 
+                && playerController.cheeseGathered >= ingredientController.cheeseNeeded 
+                && playerController.eggGathered >= ingredientController.eggNeeded)
+            {
+                levelSwitcher();
+                yield break;
+            }
         }
-        istg++;
-        levelTimerTime = permTime;
         levelSwitcher();
     }
 
 
     public void levelSwitcher()
     {
+        istg++;
+        levelTimerTime = permTime;
         if (playerController.currentLevel == 1 && istg == 1)
         {
             //Spawn objects on the next level
@@ -59,7 +69,7 @@ public class LevelManager : MonoBehaviour
             playerController.levelTwoStart();
             //lessen the perm time so that each level gets harder
             levelTimerTime -= 5;
-            StartCoroutine(levelOneTimer());
+            StartCoroutine(LevelTimer());
         }
         else if (playerController.currentLevel == 2 && istg == 2)
         {
@@ -69,7 +79,7 @@ public class LevelManager : MonoBehaviour
             playerController.levelThreeStart();
             //lessen the perm time so that each level gets harder
             levelTimerTime -= 10;
-            StartCoroutine(levelOneTimer());
+            StartCoroutine(LevelTimer());
         }
         else if (playerController.currentLevel == 3 && istg == 3)
         {
@@ -79,7 +89,7 @@ public class LevelManager : MonoBehaviour
             playerController.levelFourStart();
             //lessen the perm time so that each level gets harder
             levelTimerTime -= 15;
-            StartCoroutine(levelOneTimer());
+            StartCoroutine(LevelTimer());
         }
         else if (playerController.currentLevel == 4 && istg == 4)
         {

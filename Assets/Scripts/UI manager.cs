@@ -19,6 +19,8 @@ public class UI : MonoBehaviour
     public TMP_Text cheeseText;
     public TMP_Text eggsText;
 
+    public TMP_Text finalText;
+
     public IngredientController ingredientController;
 
     void Start()
@@ -35,6 +37,8 @@ public class UI : MonoBehaviour
         {
             milkText.text = "<s>" + milkText.text + "<s>";
         } */
+        //finalScore = playerController.score;
+        //finalText.text = "FINAL SCORE: " + finalScore;
     }
 
     /// <summary>

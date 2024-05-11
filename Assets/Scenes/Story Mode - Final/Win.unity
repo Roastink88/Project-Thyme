@@ -307,12 +307,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d91a0f0c83b79546b8981b601a06d78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerController: {fileID: 0}
+  playerController: {fileID: 2203898967710991506, guid: 57a05fd5be2f0a346b72b79a4861739d, type: 3}
   pointsText: {fileID: 0}
   milkText: {fileID: 0}
   cheeseText: {fileID: 0}
   eggsText: {fileID: 0}
-  ingredientController: {fileID: 0}
+  finalText: {fileID: 0}
+  ingredientController: {fileID: 7273356747070111931, guid: 7aa262c5f40618f438d22c6b8a1dcc5f, type: 3}
 --- !u!1 &435351987
 GameObject:
   m_ObjectHideFlags: 0
@@ -768,7 +769,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hoorayyy
+  m_text: Hooray!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
