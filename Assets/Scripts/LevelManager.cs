@@ -4,11 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
 
-    private int levelTimerTime = 30;
+    private int levelTimerTime = 35;
     private int permTime;
     private int istg;
 
@@ -83,6 +84,7 @@ public class LevelManager : MonoBehaviour
         else if (playerController.currentLevel == 4 && istg == 4)
         {
             // End game
+            SceneManager.LoadScene(3);
         }
     }
 }

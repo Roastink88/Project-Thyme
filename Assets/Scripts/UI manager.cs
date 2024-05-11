@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.SceneManagement;
 
 
 /// <summary>
@@ -13,54 +14,76 @@ using UnityEngine.SocialPlatforms.Impl;
 public class UI : MonoBehaviour
 {
     public PlayerController playerController;
-    public TMP_Text points;
-    public TMP_Text milk;
-    public TMP_Text cheese;
-    public TMP_Text eggs;
-
-    public int milkGathered;
-    public int score;
+    public TMP_Text pointsText;
+    public TMP_Text milkText;
+    public TMP_Text cheeseText;
+    public TMP_Text eggsText;
 
     public IngredientController ingredientController;
 
     void Start()
     {
         
-
     }
 
     private void Update()
     {
-        points.text = "Points: " + playerController.score.ToString();
+        pointsText.text = "Score: " + playerController.score.ToString();
 
-        if (playerController.milkGathered > ingredientController.milkNeeded)
+        checkIngredient();
+        /*if (playerController.milkGathered > ingredientController.milkNeeded)
         {
-            milk.text = "<s>" + milk.text + "<s>";
-        }
+            milkText.text = "<s>" + milkText.text + "<s>";
+        } */
     }
 
-    
-
-   
-   /* public void OnCollisionEnter(Collision collision)
+    /// <summary>
+    /// checks and compares how many ingredients the player has gathered compared to how many they need
+    /// </summary>
+    public void checkIngredient()
     {
-        if (collision.gameObject.GetComponent<Milk>())
-        {
-            if (ingredientController.milkNeeded != 0 && ingredientController.milkNeeded < milkGathered)
-            {
-                print("test");
+        int grabC = playerController.cheeseGathered;
+        int needC = ingredientController.cheeseNeeded;
 
-                milkGathered++;
-                score += 10;
-                Destroy(collision.gameObject);
-                milk.text = "<s>" + milk.text + "<s>";
-            }
-            
-            else if (ingredientController.milkNeeded == milkGathered)
-            {
-                Destroy(collision.gameObject);
-            }
+        int grabM = playerController.milkGathered;
+        int needM = ingredientController.milkNeeded;
+
+        int grabE = playerController.eggGathered;
+        int needE = ingredientController.eggNeeded;
+
+        if (grabC <= needC)
+        {
+            cheeseText.text = "Cheese: " + grabC + "/" + needC;
+        }
+
+        if (grabM <= needM)
+        {
+            milkText.text = "Milk: " + grabM + "/" + needM;
+        }
+
+        if (grabE <= needE)
+        {
+            eggsText.text = "Eggs: " + grabE + "/" + needE;
         }
     }
-   */
+
+    /// <summary>
+    /// Resets the text for the shopping list
+    /// </summary>
+    public void resetNeeded()
+    {
+        cheeseText.text = "Cheese: " + 0 + "/" + ingredientController.cheeseNeeded;
+        milkText.text = "Milk: " + 0 + "/" + ingredientController.milkNeeded;
+        eggsText.text = "Eggs: " + 0 + "/" + ingredientController.eggNeeded;
+    }
+
+    public void SwitchScene(int buildIndex)
+    {
+        SceneManager.LoadScene(buildIndex);
+    }
+
+    public void quitGame()
+    {
+        Application.Quit();
+    }
 }
